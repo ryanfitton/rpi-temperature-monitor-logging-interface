@@ -75,7 +75,7 @@
 					<p><strong>Checking DB login details:</strong></p>
 					<?php 
 						//Check details have been entered
-						if ( $dbhost == null && $dbuser == null && $dbpass == null && $dbname == null ) {
+						if ( DBHOST == null && DBUSER == null && DBPASS == null && DBPASS == null ) {
 							$status['db_login_detail_check'] = 'danger';
 							$status_message['db_login_detail_check'] = 'Please provide DB login details in config.php';
 
@@ -104,7 +104,7 @@
 						<p><strong>Attempting to connect to DB:</strong></p>
 						<?php 
 							//Initiate new $db instance
-							if ( $db = new db($dbhost, $dbuser, $dbpass, $dbname) ) {
+							if ( $db = new db(DBHOST, DBUSER, DBPASS, DBPASS) ) {
 								$status['db_connect_test'] = 'success';
 								$status_message['db_connect_test'] = 'Connected to DB';
 
@@ -131,7 +131,7 @@
 
 						<?php 
 							//Check if the 'Config' and 'Records table are found == 2
-							if ( $db->query('SELECT COUNT(*) AS tables_found_count FROM `information_schema`.`tables` WHERE `TABLE_SCHEMA` = "' . $dbname . '" AND `TABLE_NAME` IN ("config", "records")')->fetchArray()['tables_found_count'] != 2 ) {
+							if ( $db->query('SELECT COUNT(*) AS tables_found_count FROM `information_schema`.`tables` WHERE `TABLE_SCHEMA` = "' . DBPASS . '" AND `TABLE_NAME` IN ("config", "records")')->fetchArray()['tables_found_count'] != 2 ) {
 								$status['db_tables_check'] = 'danger';
 								$status_message['db_tables_check'] = 'Not all tables exist, they will be created in the next step.';
 
@@ -226,7 +226,7 @@
 			<!-- Enable PHP to gather sensor data -->
 			<div class="row">
 				<div class="col-sm-12">	
-					<p><strong>Please run the commands below if you have not already done so. Enter these in your webserver terminal to allow access to the data returned by the <code>/cron/python.py</code> file:</strong></p>
+					<p><strong>Please run the commands below if you have not already done so. Enter these in your webserver terminal to allow access to the data returned by the <code>/python/python.py</code> file:</strong></p>
 
 					<div class="alert alert-secondary" role="alert">
 						<ol>
@@ -254,13 +254,13 @@
 							</li>
 
 							<li>
-								<p>In order for <code>/cron/python.py</code> to run properly, add your Apache2 user (usally 'www-data') to the 'gpio' group:</p>
+								<p>In order for <code>/python/python.py</code> to run properly, add your Apache2 user (usally 'www-data') to the 'gpio' group:</p>
 								<pre class="pre-scrollable"><code><?php echo htmlspecialchars("sudo adduser www-data gpio"); ?></code></pre>
 							</li>
 
 							<li>
-								<p>Make the <code>/cron/python.py</code> file executable:</p>
-								<pre class="pre-scrollable"><code><?php echo htmlspecialchars("sudo chmod +x " . __DIR__ . "/cron/python.py"); ?></code></pre>
+								<p>Make the <code>/python/python.py</code> file executable:</p>
+								<pre class="pre-scrollable"><code><?php echo htmlspecialchars("sudo chmod +x " . __DIR__ . "/python/python.py"); ?></code></pre>
 							</li>
 
 							<li>
@@ -287,7 +287,7 @@
 
 							<li>
 								<p>Add this line:</p>
-								<pre class="pre-scrollable"><code><?php echo htmlspecialchars("* * * * * " . PHP_BINDIR . "/php " . __DIR__ . "/cron/run.php"); ?></code></pre>
+								<pre class="pre-scrollable"><code><?php echo htmlspecialchars("* * * * * " . PHP_BINDIR . "/php " . __DIR__ . "/cron.php"); ?></code></pre>
 							</li>
 						</ol>
 					</div>

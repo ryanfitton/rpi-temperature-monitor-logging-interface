@@ -1,12 +1,12 @@
 <?php
 	//Run this file as a cron job every minute
-	//* * * * * /usr/bin/php /var/www/html/cron/run.php
+	//* * * * * /usr/bin/php /var/www/html/cron.php
 
 
 	/*
 	 * Require app core files
 	 */
-	require(__DIR__ . '/../app.php');
+	require('app.php')
 
 	
 	/*
@@ -27,7 +27,7 @@
 		 * Run PHP Shell Exec command against the 'python.py' file
 		 * 
 		 * This file should be chmod:
-		 * 		chmod +x python.py
+		 * 		chmod +x python/python.py
 		 * 
 		 * The Apache2 user (www-data) should be added to the 'gpio' group:
 		 * 		sudo adduser www-data gpio
@@ -35,7 +35,7 @@
 		 * Assume you're using Python3 and it's version can be accessed:
 		 * 		/usr/bin/env python3 --version
 		 */
-		$command = escapeshellcmd('/usr/bin/env python3 ' . __DIR__ . '/python.py');
+		$command = escapeshellcmd('/usr/bin/env python3 ' . __DIR__ . '/python/python.py');
 		$output = shell_exec($command);
 
 		//If the output array is not empty

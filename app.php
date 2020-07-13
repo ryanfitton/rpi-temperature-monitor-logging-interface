@@ -8,23 +8,23 @@
 	/*
 	 * Require classes
 	 */
-	require(__DIR__ . '/classes/db.php');
-	require(__DIR__ . '/classes/csv.php');
+	require('classes/db.php');
+	require('classes/csv.php');
 
 
 	/*
-	 * Database connection details
+	 * Configuration details
 	 */
-	require(__DIR__ . '/config.php');
+	require('config.php');
 
 	//Check details have been entered
-	if ( $dbhost == null && $dbuser == null && $dbpass == null && $dbname == null ) {
+	if ( DBHOST == null && DBUSER == null && DBPASS == null && DBPASS == null ) {
 		die("Error: Please provide DB login details in db.php");
 
 	//Else, continue to create a new DB instance
 	} else {
 		//Initiate new $db instance
-		$db = new db($dbhost, $dbuser, $dbpass, $dbname);
+		$db = new db(DBHOST, DBUSER, DBPASS, DBPASS);
 	}
 
 

@@ -6,10 +6,10 @@
 	 */
 
 	//File to hold DB connection details
-	$dbhost = 'localhost';
-	$dbuser = '';
-	$dbpass = '';
-	$dbname = '';
+	define("DBHOST", 'localhost');
+	define("DBUSER", '');
+	define("DBPASS", '');
+	define("DBPASS", '');
 
 	//Set your timezone - Use timezones from here: https://www.php.net/manual/en/timezones.php
 	date_default_timezone_set('Europe/London');
