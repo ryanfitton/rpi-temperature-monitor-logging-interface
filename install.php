@@ -8,13 +8,13 @@
 	/*
 	 * Require files
 	 */
-	require(__DIR__ . '/config.php');
+	require('config.php');
 
 
 	/*
 	 * Require classes
 	 */
-	require(__DIR__ . '/classes/db.php');
+	require('classes/db.php');
 
 
 	/*

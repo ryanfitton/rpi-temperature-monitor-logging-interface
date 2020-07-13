@@ -2,19 +2,19 @@
 	/*
 	 * Require app core files
 	 */
-	require(__DIR__ . '/../app.php')
+	require('../app.php')
 	  
 
 	/*
 	 * Handle form post submissions
 	 */
-	require(__DIR__ . '/handler/post_options.php');
+	require('handler/post_options.php');
 
 
 	/*
 	 * Header
 	 */
-	require(__DIR__ . '/partials/header.php');
+	require('partials/header.php');
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -148,5 +148,5 @@
 
 <?php
 	//Footer
-	require(__DIR__ . '/partials/footer.php');
+	require('partials/footer.php');
 ?>
