@@ -1,0 +1,5 @@
+# Password protect the 'admin' directory
+AuthUserFile /var/www/html/admin/.htpasswd
+AuthName "Authorized personnel only."
+AuthType Basic
+Require valid-user
