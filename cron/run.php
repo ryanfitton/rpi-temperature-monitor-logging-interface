@@ -1,12 +1,12 @@
 <?php
 	//Run this file as a cron job every minute
-	//* * * * * /var/www/html/cron/run.php
+	//* * * * * /usr/bin/php /var/www/html/cron/run.php
 
 
 	/*
 	 * Require app core files
 	 */
-	require('../app.php');
+	require(__DIR__ . '/../app.php');
 
 	
 	/*
@@ -40,6 +40,9 @@
 
 		//If the output array is not empty
 		if (!empty($output)) {
+
+			//Explode
+			$output = explode(" ", $output);
 
 			//Run query to insert data as a DB record
 			$insert = $db->query('INSERT INTO records (temp,humidity) VALUES (?,?)', $output[0], $output[1]);

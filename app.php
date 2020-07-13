@@ -8,14 +8,14 @@
 	/*
 	 * Require classes
 	 */
-	require('classes/db.php');
-	require('classes/csv.php');
+	require(__DIR__ . '/classes/db.php');
+	require(__DIR__ . '/classes/csv.php');
 
 
 	/*
 	 * Database connection details
 	 */
-	require('config.php');
+	require(__DIR__ . '/config.php');
 
 	//Check details have been entered
 	if ( $dbhost == null && $dbuser == null && $dbpass == null && $dbname == null ) {

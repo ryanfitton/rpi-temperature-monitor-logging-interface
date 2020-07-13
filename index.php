@@ -2,7 +2,7 @@
 	/*
 	 * Require app core files
 	 */
-  	require('app.php');
+  	require(__DIR__ . '/app.php');
 ?>
 <!doctype html>
 <html lang="en">

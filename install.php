@@ -8,13 +8,13 @@
 	/*
 	 * Require files
 	 */
-	require('config.php');
+	require(__DIR__ . '/config.php');
 
 
 	/*
 	 * Require classes
 	 */
-	require('classes/db.php');
+	require(__DIR__ . '/classes/db.php');
 
 
 	/*
@@ -260,7 +260,7 @@
 
 							<li>
 								<p>Make the <code>/cron/python.py</code> file executable:</p>
-								<pre class="pre-scrollable"><code><?php echo htmlspecialchars(__DIR__ . "/cron/python.py"); ?></code></pre>
+								<pre class="pre-scrollable"><code><?php echo htmlspecialchars("sudo chmod +x " . __DIR__ . "/cron/python.py"); ?></code></pre>
 							</li>
 
 							<li>
@@ -287,7 +287,7 @@
 
 							<li>
 								<p>Add this line:</p>
-								<pre class="pre-scrollable"><code><?php echo htmlspecialchars("* * * * * " . PHP_BINDIR . " " . __DIR__ . "/cron/run.php"); ?></code></pre>
+								<pre class="pre-scrollable"><code><?php echo htmlspecialchars("* * * * * " . PHP_BINDIR . "/php " . __DIR__ . "/cron/run.php"); ?></code></pre>
 							</li>
 						</ol>
 					</div>
