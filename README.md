@@ -23,7 +23,7 @@ This project has been tested against the most recent software packages running o
 1. Please install a basic web server using Apache2, PHP and MySQL. Optionally also install PHPMyAdmin if you're not comfortable with the MySQLI command line interface. Please use this guide [here](https://projects.raspberrypi.org/en/projects/lamp-web-server-with-wordpress) - follow up to the WordPress install, please stop after this as WordPress is not required for this project.
 1. Install GIT:
     * In your terminal, run: ```sudo apt install git```.
-1. Change into your Apache2 web directory: ```/var/www/html```.
+1. Change into your Apache2 web directory: ```cd /var/www/html```.
 1. Clone this repo ```git clone git@github.com:ryanfitton/rpi-temperature-monitor-logging-interface.git .``` (include the end full-stop).
 1. Create a new empty database table. And add your database details to the ```config.php``` fil
 1. Go to your browser, enter the IP address of your RPi and go to ```install.php```. e.g. [http://your_ip_address/install.php](http://your_ip_address/install.php).
