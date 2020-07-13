@@ -9,7 +9,7 @@
 	define("DBHOST", 'localhost');
 	define("DBUSER", '');
 	define("DBPASS", '');
-	define("DBPASS", '');
+	define("DBNAME", '');
 
 	//Set your timezone - Use timezones from here: https://www.php.net/manual/en/timezones.php
 	date_default_timezone_set('Europe/London');
