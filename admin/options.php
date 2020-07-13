@@ -2,7 +2,7 @@
 	/*
 	 * Require app core files
 	 */
-	require(__DIR__ . '/../app.php')
+	require(__DIR__ . '/../app.php');
 	  
 
 	/*

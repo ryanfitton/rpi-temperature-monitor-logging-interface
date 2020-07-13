@@ -6,7 +6,7 @@
 	/*
 	 * Require app core files
 	 */
-	require(__DIR__ . '/app.php')
+	require(__DIR__ . '/../app.php');
 
 	
 	/*
@@ -35,7 +35,7 @@
 		 * Assume you're using Python3 and it's version can be accessed:
 		 * 		/usr/bin/env python3 --version
 		 */
-		$command = escapeshellcmd('/usr/bin/env python3 ' . __DIR__ . '/cron/python.py');
+		$command = escapeshellcmd('/usr/bin/env python3 ' . __DIR__ . '/python.py');
 		$output = shell_exec($command);
 
 		//If the output array is not empty
