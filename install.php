@@ -165,7 +165,7 @@
 							$install_tables = array();
 
 							//Create 'config' table
-							$install_tables['create_config'] = $db->query("CREATE TABLE config (id int(11) NOT NULL, refresh_time int(11) NOT NULL DEFAULT '1', monitor_name varchar(255) NOT NULL DEFAULT 'Temperature Monitor', offset_temp int(255) NOT NULL, offset_humidity int(255) NOT NULL, results_per_page int(255) NOT NULL DEFAULT '100') ENGINE=InnoDB DEFAULT CHARSET=utf8;");
+							$install_tables['create_config'] = $db->query("CREATE TABLE config (id int(11) NOT NULL, refresh_time int(11) NOT NULL DEFAULT '1', monitor_name varchar(255) NOT NULL DEFAULT 'Temperature Monitor', offset_temp decimal(5,2) NOT NULL, offset_humidity decimal(5,2) NOT NULL, results_per_page int(255) NOT NULL DEFAULT '100') ENGINE=InnoDB DEFAULT CHARSET=utf8;");
 
 							//Create 'records' table
 							$install_tables['create_records'] = $db->query("CREATE TABLE records (id bigint(20) NOT NULL, temp decimal(5,2) NOT NULL, humidity decimal(5,2) NOT NULL, datetime datetime NOT NULL DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8;");

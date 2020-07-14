@@ -15,6 +15,10 @@
 	//Retieve length of time set for sensor data poll
 	$refresh_time = $db->query('SELECT refresh_time FROM config')->fetchArray()['refresh_time'];
 
+	//Find offsets
+	$offset_temp = $db->query('SELECT offset_temp FROM config')->fetchArray()['offset_temp'];
+	$offset_humidity = $db->query('SELECT offset_humidity FROM config')->fetchArray()['offset_humidity'];
+
 	//Find the latest DB record's time
 	$last_record = $db->query('SELECT * FROM records ORDER BY ID DESC LIMIT 1')->fetchArray();
 
@@ -44,8 +48,12 @@
 			//Explode
 			$output = explode(" ", $output);
 
+			//Appy offsets
+			$temp = $output[0] + $offset_temp;
+			$humidity = $output[1] + $offset_humidity;
+
 			//Run query to insert data as a DB record
-			$insert = $db->query('INSERT INTO records (temp,humidity) VALUES (?,?)', $output[0], $output[1]);
+			$insert = $db->query('INSERT INTO records (temp,humidity) VALUES (?,?)', $temp, $humidity);
 
 			//If rows affected are greater than 1
 			if ( $insert->affectedRows() > 0 ) {

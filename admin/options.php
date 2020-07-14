@@ -90,7 +90,7 @@
 				</small>
 				
 				<div class="input-group">
-					<input type="number" class="form-control" name="offset_temp" id="offset_temp" min="-20" max="20" value="<?php echo (!empty($errors) ? $_POST['offset_temp'] : $config_options['offset_temp']); ?>">
+					<input type="number" class="form-control" name="offset_temp" id="offset_temp" min="-20" max="20" step=".01" value="<?php echo (!empty($errors) ? $_POST['offset_temp'] : $config_options['offset_temp']); ?>">
 					<div class="input-group-append">
 						<span class="input-group-text">&#8451;</span>
 					</div>
@@ -103,7 +103,7 @@
 					You can enter +/- values.
 				</small>
 				<div class="input-group">
-					<input type="number" class="form-control" name="offset_humidity" id="offset_humidity" min="-20" max="20" value="<?php echo (!empty($errors) ? $_POST['offset_humidity'] : $config_options['offset_humidity']); ?>">
+					<input type="number" class="form-control" name="offset_humidity" id="offset_humidity" min="-20" max="20" step=".01" value="<?php echo (!empty($errors) ? $_POST['offset_humidity'] : $config_options['offset_humidity']); ?>">
 					<div class="input-group-append">
 						<span class="input-group-text">&#8451;</span>
 					</div>
