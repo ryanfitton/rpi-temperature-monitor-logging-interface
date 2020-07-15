@@ -250,7 +250,6 @@
 										<pre class="pre-scrollable"><code><?php echo htmlspecialchars("sudo pip3 install Adafruit_DHT"); ?></code></pre>
 									</li>
 								</ol>
-								<pre class="pre-scrollable"><code><?php echo htmlspecialchars("sudo adduser www-data gpio"); ?></code></pre>
 							</li>
 
 							<li>
