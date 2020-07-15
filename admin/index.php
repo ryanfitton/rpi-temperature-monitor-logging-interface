@@ -43,7 +43,7 @@
 
 	//Build SQL query to retrieve the correct data based on the page being viewed
 	$offset = ($page - 1) * $results_per_page;
-	$records = $db->query('SELECT * FROM records LIMIT ' . $offset . ',' . $results_per_page)->fetchAll();
+	$records = $db->query('SELECT * FROM records ORDER BY id DESC LIMIT ' . $offset . ',' . $results_per_page)->fetchAll();
 
 
 	//Build pagination

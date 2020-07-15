@@ -1,7 +1,7 @@
 # Temperature Monitor web interface and loging for DHT22 sensors
 
 * Author: [Ryan Fitton](https://ryanfitton.co.uk)
-* Last updated: 2020/07/13
+* Last updated: 2020/07/15
 
 ## Notes
 * This project is designed to be run on a Raspberry Pi (I have had this running on a RPi Zero without issues)
@@ -32,3 +32,16 @@ This project has been tested against the most recent software packages running o
     * The default .htpasswd authentication logins are:
         * Username: rpi-temp
         * Password: J*eoX3Xo6!0)
+
+## Screenshots
+
+![Screenshot Showing Records Page](https://github.com/ryanfitton/rpi-temperature-monitor-logging-interface/blob/master/DOCS-IMAGES/rpi-temp-monitor-1.png?raw=true)
+
+![Screenshot Showing Options Page](https://github.com/ryanfitton/rpi-temperature-monitor-logging-interface/blob/master/DOCS-IMAGES/rpi-temp-monitor-2.png?raw=true)
+
+
+## Example device images
+
+![Example project 1](https://github.com/ryanfitton/rpi-temperature-monitor-logging-interface/blob/master/DOCS-IMAGES/IMG_20200714_133324.jpg?raw=true)
+
+![Example project 2](https://github.com/ryanfitton/rpi-temperature-monitor-logging-interface/blob/master/DOCS-IMAGES/IMG_20200714_133454.jpg?raw=true)
