@@ -58,7 +58,40 @@
 			//If rows affected are greater than 1
 			if ( $insert->affectedRows() > 0 ) {
 				//If no errors from SQL Query
-				echo "Sensor Data added to DB.";
+				echo "Sensor Data added to DB.\n";
+
+				//Send MQTT Messages (If enabled)
+				if ($db->query('SELECT mqtt_enable FROM config')->fetchArray()['mqtt_enable'] == 1) {
+					//Find MQTT config options
+					$mqtt_server = $db->query('SELECT mqtt_server FROM config')->fetchArray()['mqtt_server'];
+					$mqtt_port = $db->query('SELECT mqtt_port FROM config')->fetchArray()['mqtt_port'];
+					$mqtt_username = $db->query('SELECT mqtt_username FROM config')->fetchArray()['mqtt_username'];
+					$mqtt_password = $db->query('SELECT mqtt_password FROM config')->fetchArray()['mqtt_password'];
+					$mqtt_clientid = $db->query('SELECT mqtt_clientid FROM config')->fetchArray()['mqtt_clientid'];
+					$mqtt_topictemperature = $db->query('SELECT mqtt_topictemperature FROM config')->fetchArray()['mqtt_topictemperature'];
+					$mqtt_topichumidity = $db->query('SELECT mqtt_topichumidity FROM config')->fetchArray()['mqtt_topichumidity'];
+
+					echo "Now attempting to broadcast message to MQTT broker server.\n";
+
+					//Initiate new MQTT instance
+					$mqtt = new Bluerhinos\phpMQTT($mqtt_server, $mqtt_port, $mqtt_clientid);
+
+					//Connect to MQTT Server
+					if ($mqtt->connect(true, NULL, $mqtt_username, $mqtt_password)) {
+						//Temperature message
+						$mqtt->publish($mqtt_topictemperature, "Temperature: " . $temp, 0, false);
+						echo "MQTT broadcast published for temperature.\n";
+
+						//Humidity message
+						$mqtt->publish($mqtt_topichumidity, "Humidity: " . $humidity , 0, false);
+						echo "MQTT broadcast published for humidity.\n";
+
+						//Close connection
+						$mqtt->close();
+					} else {
+						die("Error: Unable to connect to MQTT broker server");
+					}
+				}
 			
 			//If there is an error inserting
 			} else {
@@ -72,6 +105,6 @@
 
 	//If the time to poll has not reached threashold
 	} else {
-		echo "Too soon to poll new data based on 'refresh' minute value set in the admin.";
+		echo "Too soon to poll new data based on 'refresh' minute value set in the admin.\n";
 	}
 ?>

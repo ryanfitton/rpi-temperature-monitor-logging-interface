@@ -34,7 +34,7 @@
 
 	<title>Installation</title>
 
-	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -165,7 +165,7 @@
 							$install_tables = array();
 
 							//Create 'config' table
-							$install_tables['create_config'] = $db->query("CREATE TABLE config (id int(11) NOT NULL, refresh_time int(11) NOT NULL DEFAULT '1', monitor_name varchar(255) NOT NULL DEFAULT 'Temperature Monitor', offset_temp decimal(5,2) NOT NULL, offset_humidity decimal(5,2) NOT NULL, results_per_page int(255) NOT NULL DEFAULT '100') ENGINE=InnoDB DEFAULT CHARSET=utf8;");
+							$install_tables['create_config'] = $db->query("CREATE TABLE config (id int(11) NOT NULL, refresh_time int(11) NOT NULL DEFAULT '1', monitor_name varchar(255) NOT NULL DEFAULT 'Temperature Monitor', offset_temp decimal(5,2) NOT NULL, offset_humidity decimal(5,2) NOT NULL, results_per_page int(255) NOT NULL DEFAULT '100', mqtt_enable tinyint(1) DEFAULT '0', mqtt_server varchar(255) DEFAULT '', mqtt_port int(255) DEFAULT '1883', mqtt_username varchar(255) DEFAULT '', mqtt_password varchar(255) DEFAULT '', mqtt_clientid varchar(255) DEFAULT 'temp_monitor_293849', mqtt_topictemperature varchar(255) DEFAULT 'topic_temp_monitor_temperature', mqtt_topichumidity varchar(255) DEFAULT 'topic_temp_monitor_humidity') ENGINE=InnoDB DEFAULT CHARSET=utf8;");
 
 							//Create 'records' table
 							$install_tables['create_records'] = $db->query("CREATE TABLE records (id bigint(20) NOT NULL, temp decimal(5,2) NOT NULL, humidity decimal(5,2) NOT NULL, datetime datetime NOT NULL DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
@@ -183,7 +183,7 @@
 							$install_tables['set_records_primary_key_ai'] = $db->query("ALTER TABLE records MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;");
 
 							//Installing data for 'config' table
-							$install_tables['install_config_table_data'] = $db->query("INSERT INTO config (id, refresh_time, monitor_name, offset_temp, offset_humidity, results_per_page) VALUES (1, 1, 'Temperature Monitor', 0, 0, 100);");
+							$install_tables['install_config_table_data'] = $db->query("INSERT INTO config (id, refresh_time, monitor_name, offset_temp, offset_humidity, results_per_page, mqtt_enable, mqtt_server, mqtt_port, mqtt_username, mqtt_password, mqtt_clientid, mqtt_topictemperature, mqtt_topichumidity) VALUES (1, 1, 'Temperature Monitor', 0, 0, 100, 0, '', '1883', '', '', 'temp_monitor_293849', 'topic_temp_monitor_temperature', 'topic_temp_monitor_humidity');");
 
 							//Installing data for 'records' table
 							$install_tables['install_records_table_data'] = $db->query("INSERT INTO records (id, temp, humidity, datetime) VALUES

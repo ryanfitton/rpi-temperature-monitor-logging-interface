@@ -6,7 +6,7 @@
 
     <title><?php echo $site_name; ?></title>
 
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/dashboard.css" rel="stylesheet">
   </head>
 

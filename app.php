@@ -6,6 +6,12 @@
 
 
 	/*
+	 * Require Composer packages
+	 */
+	require(__DIR__ . '/vendor/autoload.php');
+
+	
+	/*
 	 * Require classes
 	 */
 	require(__DIR__ . '/classes/db.php');

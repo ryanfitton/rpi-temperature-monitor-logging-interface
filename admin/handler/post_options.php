@@ -21,12 +21,29 @@
 			//Remove button from Post array - This will affect saving if not removed
 			unset($_POST['submit_options']);
 
+			//Checkboxes - If MQTT posted value is not equal to 1 then set to 0 in DB
+			if (!isset($_POST['mqtt_enable'])) {
+				$_POST['mqtt_enable'] = 0;
+			}
+
 			//Setup error messages for options
-			$validation['monitor_name'] = 'Please enter the name for this monitor.';
-			$validation['refresh_time'] = 'Please enter the alue for how often data is to be pulled (per minute)';
-			$validation['offset_temp'] = 'Please enter a value for the temperature offset. You can enter +/- values.';
-			$validation['offset_humidity'] = 'Please enter a value for the humidity offset. You can enter +/- values.';
-			$validation['results_per_page'] = 'Please enter a value for the how many results should be shown per page.';
+				//Standard main configuration error messages
+				$validation['monitor_name'] = 'Please enter the name for this monitor.';
+				$validation['refresh_time'] = 'Please enter the alue for how often data is to be pulled (per minute)';
+				$validation['offset_temp'] = 'Please enter a value for the temperature offset. You can enter +/- values.';
+				$validation['offset_humidity'] = 'Please enter a value for the humidity offset. You can enter +/- values.';
+				$validation['results_per_page'] = 'Please enter a value for the how many results should be shown per page.';
+
+				//MQTT error messages
+				if (isset($_POST['mqtt_enable']) && $_POST['mqtt_enable'] == 1) {
+					$validation['mqtt_server'] = 'Please enter a an IP Address or Hostname for the MQTT broker server.';
+					$validation['mqtt_port'] = 'Please enter a valid MQTT port.';
+					$validation['mqtt_username'] = 'Please enter a username for the MQTT broker server.';
+					$validation['mqtt_password'] = 'Please enter a password for the MQTT broker server.';
+					$validation['mqtt_clientid'] = 'Please enter a unique client ID for the MQTT broker server.';
+					$validation['mqtt_topictemperature'] = 'Please enter a value for the temperature topic.';
+					$validation['mqtt_topichumidity'] = 'Please enter a value for the humidity topic.';
+				}
 
 			//Run each field against validation
 			foreach($_POST as $key => $value) {
